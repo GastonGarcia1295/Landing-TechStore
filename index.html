@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Tech Store Shop | iPhones · Castelar</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config={theme:{extend:{colors:{accent:'#FF9900','accent-dark':'#e68a00',dark:'#111',mid:'#555',muted:'#888',light:'#f5f5f7',border:'#e8e8e8'},fontFamily:{sans:['Montserrat','sans-serif'],display:['Bebas Neue','sans-serif']}}}}
+</script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="preloader" class="preloader">
+  <div class="loader-text">TECH STORE</div>
+</div>
+<div id="scroll-progress" class="scroll-progress"></div>
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<div class="grain-overlay"></div>
+
+
+<canvas id="sand-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2.5 flex-shrink-0">
+      <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black" style="background:#FF9900;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1px">T</div>
+      <div>
+        <div class="font-black text-sm text-dark" style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px;font-size:1rem">TECH STORE SHOP</div>
+        <div class="text-xs text-muted hidden sm:block font-medium" style="letter-spacing:.04em">Equipos electrónicos y accesorios</div>
+      </div>
+    </a>
+    <ul class="hidden md:flex items-center gap-7">
+      <li><a href="#hero" class="nav-link">Inicio</a></li>
+      <li><a href="#equipos" class="nav-link">Equipos</a></li>
+      <li><a href="#accesorios" class="nav-link">Accesorios</a></li>
+      <li><a href="#canje" class="nav-link">Plan Canje</a></li>
+      <li><a href="#servicios" class="nav-link">Servicios</a></li>
+      <li><a href="#contacto" class="nav-link">Contacto</a></li>
+    </ul>
+    <a href="https://wa.me/5491168087692" target="_blank" class="hidden md:inline-flex btn btn-orange px-5 py-2.5">WhatsApp</a>
+    <button id="menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="mob-menu md:hidden flex-col px-6 pb-5 pt-2 bg-white border-t border-gray-100 gap-2.5">
+    <a href="#equipos" class="nav-link py-2 border-b border-gray-50">Equipos</a>
+    <a href="#accesorios" class="nav-link py-2 border-b border-gray-50">Accesorios</a>
+    <a href="#canje" class="nav-link py-2 border-b border-gray-50">Plan Canje</a>
+    <a href="#servicios" class="nav-link py-2 border-b border-gray-50">Servicios</a>
+    <a href="#contacto" class="nav-link py-2">Contacto</a>
+    <a href="https://wa.me/5491168087692" target="_blank" class="btn btn-orange magnetic mt-2">WhatsApp</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="hero-wrap px-6 lg:px-8">
+  <div class="hero-inner max-w-7xl mx-auto w-full pt-24 pb-20">
+
+    <!-- Badge -->
+    <div class="reveal mb-3">
+      <span class="inline-block px-4 py-1.5 rounded-full border border-orange-400/40 text-orange-300 text-xs font-bold uppercase tracking-widest" style="background:rgba(255,153,0,.08)">Tech Store Shop</span>
+    </div>
+
+    <!-- Subtítulo -->
+    <p class="reveal text-orange-300 font-bold text-xs uppercase tracking-widest mb-5" style="letter-spacing:.15em">
+      Tienda de equipos electrónicos y accesorios
+    </p>
+
+    <!-- TECH STORE SHOP — grande, stroke effect -->
+    <div class="reveal mb-3">
+      <div class="text-stroke" style="font-size:clamp(60px,10vw,140px)">TECH STORE</div>
+      <div class="text-gradient" style="font-size:clamp(60px,10vw,140px)">SHOP</div>
+    </div>
+
+    <!-- TU PRÓXIMO IPHONE — pequeño, glitch -->
+    <div class="reveal mb-8">
+      <span class="font-bold uppercase" data-text="TU PRÓXIMO IPHONE ESTÁ ACÁ"
+        style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,3vw,38px);letter-spacing:.2em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)">
+        TU PRÓXIMO <span style="color:#FF9900">iPHONE</span> ESTÁ ACÁ
+      </span>
+    </div>
+
+    <!-- Bullets -->
+    <ul class="reveal space-y-2.5 mb-10">
+      <li class="flex items-center gap-2.5 text-gray-300 text-sm font-medium">
+        <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background:#FF9900;color:#fff">&#10003;</span>
+        Trabajamos todos los modelos
+      </li>
+      <li class="flex items-center gap-2.5 text-gray-300 text-sm font-medium">
+        <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background:#FF9900;color:#fff">&#10003;</span>
+        Equipos nuevos y usados, con garantía
+      </li>
+      <li class="flex items-center gap-2.5 text-gray-300 text-sm font-medium">
+        <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style="background:#FF9900;color:#fff">&#10003;</span>
+        Accesorios y más
+      </li>
+    </ul>
+
+    <!-- Botones -->
+    <div class="reveal flex flex-wrap gap-4 mb-16">
+      <a href="https://wa.me/5491168087692?text=Hola%2C%20quiero%20consultar%20sobre%20un%20iPhone" target="_blank" class="btn btn-orange magnetic text-sm shadow-2xl flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WHATSAPP DIRECTO
+      </a>
+      <a href="https://instagram.com/_tech.store.shop" target="_blank" class="btn btn-ghost text-sm">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        VER CATÁLOGO
+      </a>
+    </div>
+
+    <!-- NEON STATS row -->
+    <div class="reveal grid grid-cols-3 gap-6 max-w-lg">
+      <div class="text-center">
+        <div class="text-neon" style="font-size:2.5rem">100%</div>
+        <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider mt-1">Pago al recibir</div>
+      </div>
+      <div class="text-center">
+        <div class="text-neon" style="font-size:2.5rem">5★</div>
+        <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider mt-1">Atención</div>
+      </div>
+      <div class="text-center">
+        <div class="text-neon" style="font-size:2.5rem">+5</div>
+        <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider mt-1">Modelos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="py-5 bg-dark overflow-hidden border-y border-gray-800" style="position:relative;z-index:1">
+  <div class="marquee-track">
+    <span class="text-gray-400 font-black uppercase text-sm tracking-widest px-8" style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em">iPhone 17 &nbsp;&bull;&nbsp; iPhone 16 &nbsp;&bull;&nbsp; iPhone 15 &nbsp;&bull;&nbsp; iPhone 14 &nbsp;&bull;&nbsp; iPhone 13 &nbsp;&bull;&nbsp; Plan Canje &nbsp;&bull;&nbsp; Accesorios &nbsp;&bull;&nbsp; Garantía incluida &nbsp;&bull;&nbsp; Pago al recibir &nbsp;&bull;&nbsp; Envíos al país &nbsp;&bull;&nbsp;</span>
+    <span class="text-gray-400 font-black uppercase text-sm tracking-widest px-8" style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.2em">iPhone 17 &nbsp;&bull;&nbsp; iPhone 16 &nbsp;&bull;&nbsp; iPhone 15 &nbsp;&bull;&nbsp; iPhone 14 &nbsp;&bull;&nbsp; iPhone 13 &nbsp;&bull;&nbsp; Plan Canje &nbsp;&bull;&nbsp; Accesorios &nbsp;&bull;&nbsp; Garantía incluida &nbsp;&bull;&nbsp; Pago al recibir &nbsp;&bull;&nbsp; Envíos al país &nbsp;&bull;&nbsp;</span>
+  </div>
+</div>
+
+<!-- TRUST -->
+<section class="py-16 bg-light border-b border-border" style="position:relative;z-index:1">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="trust-box reveal"><span class="trust-icon">&#128274;</span><div class="font-bold text-dark text-sm">Pago al recibir</div><div class="text-xs text-muted mt-1">Sin adelantos</div></div>
+      <div class="trust-box reveal rv1"><span class="trust-icon">&#9989;</span><div class="font-bold text-dark text-sm">Garantía incluida</div><div class="text-xs text-muted mt-1">En todos los equipos</div></div>
+      <div class="trust-box reveal rv2"><span class="trust-icon">&#128222;</span><div class="font-bold text-dark text-sm">Atención directa</div><div class="text-xs text-muted mt-1">Por WhatsApp</div></div>
+      <div class="trust-box reveal rv3"><span class="trust-icon">&#128666;</span><div class="font-bold text-dark text-sm">Envíos al país</div><div class="text-xs text-muted mt-1">Coordinados</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPOS -->
+<section id="equipos" class="py-24 px-6 lg:px-8 bg-white" style="position:relative;z-index:1">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <span class="section-tag">Catálogo</span>
+      <h2 class="font-black text-dark" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:3px">EQUIPOS</h2>
+      <p class="text-muted mt-3 text-sm max-w-md mx-auto font-medium">Nuevos y usados con garantía. Consultanos por precio actualizado.</p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="phone-card reveal"><div class="phone-img-wrap"><img src="iphone_17_nobg.png" alt="iPhone 17" class="phone-img"/></div><div class="p-5"><span class="text-xs font-bold text-accent uppercase tracking-wider">Nuevo</span><h3 class="font-bold text-dark text-lg mt-1" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px">iPHONE 17</h3><p class="text-muted text-xs mt-1 mb-4 font-medium">256 GB &nbsp;·&nbsp; Pro 256 GB &nbsp;·&nbsp; Pro Max</p><a href="https://wa.me/5491168087692?text=Consulta%20iPhone%2017" target="_blank" class="btn btn-orange magnetic w-full text-xs py-2.5">Consultar precio</a></div></div>
+      <div class="phone-card reveal rv1"><div class="phone-img-wrap"><img src="iphone_16_nobg.png" alt="iPhone 16" class="phone-img"/></div><div class="p-5"><span class="text-xs font-bold text-accent uppercase tracking-wider">Nuevo</span><h3 class="font-bold text-dark text-lg mt-1" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px">iPHONE 16</h3><p class="text-muted text-xs mt-1 mb-4 font-medium">256 GB &nbsp;·&nbsp; 512 GB &nbsp;·&nbsp; Plus, Pro y Pro Max</p><a href="https://wa.me/5491168087692?text=Consulta%20iPhone%2016" target="_blank" class="btn btn-orange magnetic w-full text-xs py-2.5">Consultar precio</a></div></div>
+      <div class="phone-card reveal rv2"><div class="phone-img-wrap"><img src="iphone_15_nobg.png" alt="iPhone 15" class="phone-img"/></div><div class="p-5"><span class="text-xs font-bold text-muted uppercase tracking-wider">Clásico</span><h3 class="font-bold text-dark text-lg mt-1" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px">iPHONE 15</h3><p class="text-muted text-xs mt-1 mb-4 font-medium">128 GB &nbsp;·&nbsp; 15 Pro Max 256 GB</p><a href="https://wa.me/5491168087692?text=Consulta%20iPhone%2015" target="_blank" class="btn btn-orange magnetic w-full text-xs py-2.5">Consultar precio</a></div></div>
+      <div class="phone-card reveal rv1"><div class="phone-img-wrap"><img src="iphone_14_nobg.png" alt="iPhone 14" class="phone-img"/></div><div class="p-5"><span class="text-xs font-bold text-muted uppercase tracking-wider">Clásico</span><h3 class="font-bold text-dark text-lg mt-1" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px">iPHONE 14</h3><p class="text-muted text-xs mt-1 mb-4 font-medium">128 GB &nbsp;·&nbsp; 14 Pro y Pro Max 256 GB</p><a href="https://wa.me/5491168087692?text=Consulta%20iPhone%2014" target="_blank" class="btn btn-orange magnetic w-full text-xs py-2.5">Consultar precio</a></div></div>
+      <div class="phone-card reveal rv2"><div class="phone-img-wrap"><img src="iphone_13_nobg.png" alt="iPhone 13" class="phone-img"/></div><div class="p-5"><span class="text-xs font-bold text-muted uppercase tracking-wider">Clásico</span><h3 class="font-bold text-dark text-lg mt-1" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px">iPHONE 13</h3><p class="text-muted text-xs mt-1 mb-4 font-medium">128 GB &nbsp;·&nbsp; 13 Pro Max 256 GB</p><a href="https://wa.me/5491168087692?text=Consulta%20iPhone%2013" target="_blank" class="btn btn-orange magnetic w-full text-xs py-2.5">Consultar precio</a></div></div>
+      <div class="phone-card reveal rv3 flex flex-col items-center justify-center p-8 text-center" style="background:#f8f8f8;min-height:18rem">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:4rem;color:#e8e8e8;line-height:1">+</div>
+        <h3 class="font-black text-dark text-xl mb-2" style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px">Y MUCHOS MÁS</h3>
+        <p class="text-muted text-xs mb-6 font-medium leading-relaxed">Todos los modelos, nuevos y usados. Consultanos.</p>
+        <a href="https://wa.me/5491168087692?text=Hola%2C%20busco%20un%20iPhone" target="_blank" class="btn btn-orange magnetic text-xs">Consultar disponibilidad</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN CANJE -->
+<section id="canje" class="canje-section py-24 px-6 lg:px-8" style="position:relative;z-index:1">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+      <div class="reveal">
+        <span class="section-tag" style="background:#e8e8e8;color:#444">Plan Canje</span>
+        <h2 class="font-black text-dark mb-5 leading-none" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:3px">TENÉS UN<br/>EQUIPO.<br/>QUERÉS OTRO.</h2>
+        <p class="text-mid text-sm leading-relaxed mb-8 max-w-md font-medium">Traé tu iPhone actual y sumá su valor al modelo que querés. Tasamos en el momento, al mejor precio.</p>
+        <a href="https://wa.me/5491168087692?text=Hola%2C%20quiero%20consultar%20el%20plan%20canje" target="_blank" class="btn btn-orange magnetic text-sm shadow-lg">Consultar plan canje</a>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="trust-box reveal"><span class="trust-icon">&#128202;</span><div class="font-bold text-dark text-sm">Tasación inmediata</div><div class="text-xs text-muted mt-1">Sin esperas</div></div>
+        <div class="trust-box reveal rv1"><span class="trust-icon">&#128176;</span><div class="font-bold text-dark text-sm">Mejor precio</div><div class="text-xs text-muted mt-1">Por tu equipo</div></div>
+        <div class="trust-box reveal rv2"><span class="trust-icon">&#9889;</span><div class="font-bold text-dark text-sm">El mismo día</div><div class="text-xs text-muted mt-1">Proceso rápido</div></div>
+        <div class="trust-box reveal rv3"><span class="trust-icon">&#128274;</span><div class="font-bold text-dark text-sm">Sin riesgos</div><div class="text-xs text-muted mt-1">Pagás al recibir</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ACCESORIOS -->
+<section id="accesorios" style="position:relative;overflow:hidden;background:#111;padding:9rem 1.5rem;">
+
+  <!-- sand canvas -->
+  <canvas id="accCvs" style="position:absolute;inset:0;z-index:0;pointer-events:none"></canvas>
+
+  <!-- fade top (white) -->
+  <div style="position:absolute;top:0;left:0;right:0;height:160px;z-index:2;pointer-events:none;
+              background:linear-gradient(to bottom,#fff 0%,transparent 100%)"></div>
+  <!-- fade bottom (light gray) -->
+  <div style="position:absolute;bottom:0;left:0;right:0;height:160px;z-index:2;pointer-events:none;
+              background:linear-gradient(to top,#f5f5f7 0%,transparent 100%)"></div>
+
+  <div style="position:relative;z-index:3;max-width:80rem;margin:0 auto">
+
+    <!-- heading -->
+    <div style="text-align:center;margin-bottom:4rem" class="reveal">
+      <span style="display:inline-block;background:rgba(255,153,0,.15);color:#FF9900;
+                   font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+                   padding:.3rem 1rem;border-radius:100px;border:1px solid rgba(255,153,0,.3);
+                   margin-bottom:.75rem">Accesorios</span>
+      <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);
+                 letter-spacing:3px;color:#fff;line-height:1">
+        ACCESORIOS <span style="color:#FF9900">APPLE</span>
+      </h2>
+      <p style="color:#777;margin-top:.75rem;font-size:.85rem;font-weight:500">
+        Cables y cargadores originales para tu iPhone.
+      </p>
+    </div>
+
+    <!-- cards grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem">
+
+      <!-- CABLE TIPO C -->
+      <div class="ac reveal"
+           style="background:#1c1c1e;border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;
+                  overflow:hidden;position:relative;transition:all .4s cubic-bezier(.16,1,.3,1)">
+        <div class="ac-glow" style="position:absolute;inset:0;border-radius:1.5rem;z-index:1;pointer-events:none;
+             background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,153,0,.14) 0%,transparent 55%);
+             opacity:0;transition:opacity .3s"></div>
+        <div class="ac-shine" style="position:absolute;top:0;left:-100%;width:55%;height:100%;z-index:5;
+             background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+             transform:skewX(-15deg);transition:left .6s ease;pointer-events:none"></div>
+        <!-- image area -->
+        <div style="height:13rem;display:flex;align-items:center;justify-content:center;
+                    background:linear-gradient(150deg,#242424,#1a1a1a);
+                    border-bottom:1px solid rgba(255,255,255,.07);position:relative">
+          <!-- spinning ring -->
+          <div class="ac-ring" style="position:relative;width:9rem;height:9rem;
+               display:flex;align-items:center;justify-content:center">
+            <div class="ac-spin" style="position:absolute;inset:-5px;border-radius:50%;
+                 border:2px dashed rgba(255,153,0,.25);
+                 animation:acSpin 9s linear infinite"></div>
+            <div class="ac-disk" style="width:9rem;height:9rem;border-radius:50%;
+                 background:linear-gradient(135deg,#2c2c2c,#1e1e1e);
+                 border:2px solid rgba(255,255,255,.1);
+                 box-shadow:0 0 0 5px #1c1c1e,0 0 0 6px rgba(255,255,255,.06),inset 0 0 20px rgba(0,0,0,.5);
+                 display:flex;align-items:center;justify-content:center;
+                 transition:all .4s cubic-bezier(.16,1,.3,1)">
+              <img src="cable-tipo-c-a-usb-c-1m_nobg.png" style="max-width:7.5rem;max-height:7.5rem;object-fit:contain;
+                   filter:drop-shadow(0 4px 12px rgba(0,0,0,.7));
+                   transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s" class="ac-img"/>
+            </div>
+          </div>
+        </div>
+        <!-- text body -->
+        <div style="padding:1.25rem 1.25rem 1.5rem">
+          <span style="display:inline-block;background:rgba(255,255,255,.07);color:#aaa;
+                       font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+                       padding:.2rem .75rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);
+                       margin-bottom:.5rem">Accesorio</span>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;
+                     color:#fff;margin-bottom:.3rem">CABLE TIPO C</h3>
+          <p style="font-size:.7rem;color:#888;font-weight:500;margin-bottom:1rem;line-height:1.5">
+            Apple &nbsp;&middot;&nbsp; Trenzado &nbsp;&middot;&nbsp; USB-C a USB-C</p>
+          <a href="https://wa.me/5491168087692?text=Consulta%20Cable%20Tipo%20C%20Apple" target="_blank"
+             class="ac-btn magnetic" style="display:flex;align-items:center;justify-content:center;width:100%;
+             padding:.65rem 1rem;background:#FF9900;color:#fff;font-family:'Montserrat',sans-serif;
+             font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+             border-radius:.625rem;text-decoration:none;transition:all .25s;position:relative;overflow:hidden">
+            Consultar precio
+          </a>
+        </div>
+      </div>
+
+      <!-- CABLE TRADICIONAL -->
+      <div class="ac reveal rv1"
+           style="background:#1c1c1e;border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;
+                  overflow:hidden;position:relative;transition:all .4s cubic-bezier(.16,1,.3,1)">
+        <div class="ac-glow" style="position:absolute;inset:0;border-radius:1.5rem;z-index:1;pointer-events:none;
+             background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,153,0,.14) 0%,transparent 55%);
+             opacity:0;transition:opacity .3s"></div>
+        <div class="ac-shine" style="position:absolute;top:0;left:-100%;width:55%;height:100%;z-index:5;
+             background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+             transform:skewX(-15deg);transition:left .6s ease;pointer-events:none"></div>
+        <div style="height:13rem;display:flex;align-items:center;justify-content:center;
+                    background:linear-gradient(150deg,#242424,#1a1a1a);
+                    border-bottom:1px solid rgba(255,255,255,.07);position:relative">
+          <div class="ac-ring" style="position:relative;width:9rem;height:9rem;
+               display:flex;align-items:center;justify-content:center">
+            <div class="ac-spin" style="position:absolute;inset:-5px;border-radius:50%;
+                 border:2px dashed rgba(255,153,0,.25);
+                 animation:acSpin 9s linear infinite 1s"></div>
+            <div class="ac-disk" style="width:9rem;height:9rem;border-radius:50%;
+                 background:linear-gradient(135deg,#2c2c2c,#1e1e1e);
+                 border:2px solid rgba(255,255,255,.1);
+                 box-shadow:0 0 0 5px #1c1c1e,0 0 0 6px rgba(255,255,255,.06),inset 0 0 20px rgba(0,0,0,.5);
+                 display:flex;align-items:center;justify-content:center;
+                 transition:all .4s cubic-bezier(.16,1,.3,1)">
+              <img src="Cable-Iphone-a-USB-Blanco-1-mt-1.jpg_nobg.png" style="max-width:7.5rem;max-height:7.5rem;object-fit:contain;
+                   filter:drop-shadow(0 4px 12px rgba(0,0,0,.7));
+                   transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s" class="ac-img"/>
+            </div>
+          </div>
+        </div>
+        <div style="padding:1.25rem 1.25rem 1.5rem">
+          <span style="display:inline-block;background:rgba(255,255,255,.07);color:#aaa;
+                       font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+                       padding:.2rem .75rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);
+                       margin-bottom:.5rem">Accesorio</span>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;
+                     color:#fff;margin-bottom:.3rem">CABLE TRADICIONAL</h3>
+          <p style="font-size:.7rem;color:#888;font-weight:500;margin-bottom:1rem;line-height:1.5">
+            Apple &nbsp;&middot;&nbsp; USB-C a Lightning &nbsp;&middot;&nbsp; 1m</p>
+          <a href="https://wa.me/5491168087692?text=Consulta%20Cable%20Tradicional%20Apple" target="_blank"
+             class="ac-btn magnetic" style="display:flex;align-items:center;justify-content:center;width:100%;
+             padding:.65rem 1rem;background:#FF9900;color:#fff;font-family:'Montserrat',sans-serif;
+             font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+             border-radius:.625rem;text-decoration:none;transition:all .25s;position:relative;overflow:hidden">
+            Consultar precio
+          </a>
+        </div>
+      </div>
+
+      <!-- CABEZAL 20W -->
+      <div class="ac reveal rv2"
+           style="background:#1c1c1e;border:1px solid rgba(255,153,0,.25);border-radius:1.5rem;
+                  overflow:hidden;position:relative;transition:all .4s cubic-bezier(.16,1,.3,1)">
+        <div class="ac-glow" style="position:absolute;inset:0;border-radius:1.5rem;z-index:1;pointer-events:none;
+             background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,153,0,.18) 0%,transparent 55%);
+             opacity:0;transition:opacity .3s"></div>
+        <div class="ac-shine" style="position:absolute;top:0;left:-100%;width:55%;height:100%;z-index:5;
+             background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+             transform:skewX(-15deg);transition:left .6s ease;pointer-events:none"></div>
+        <div style="height:13rem;display:flex;align-items:center;justify-content:center;
+                    background:linear-gradient(150deg,#242424,#1a1a1a);
+                    border-bottom:1px solid rgba(255,153,0,.15);position:relative">
+          <div class="ac-ring" style="position:relative;width:9rem;height:9rem;
+               display:flex;align-items:center;justify-content:center">
+            <div class="ac-spin" style="position:absolute;inset:-5px;border-radius:50%;
+                 border:2px dashed rgba(255,153,0,.45);
+                 animation:acSpin 6s linear infinite"></div>
+            <div class="ac-disk" style="width:9rem;height:9rem;border-radius:50%;
+                 background:linear-gradient(135deg,#2c2c2c,#1e1e1e);
+                 border:2px solid rgba(255,153,0,.4);
+                 box-shadow:0 0 0 5px #1c1c1e,0 0 0 6px rgba(255,153,0,.2),0 0 20px rgba(255,153,0,.15),inset 0 0 20px rgba(0,0,0,.5);
+                 display:flex;align-items:center;justify-content:center;
+                 transition:all .4s cubic-bezier(.16,1,.3,1)">
+              <img src="1161-producto-4-8963_nobg.png" style="max-width:7.5rem;max-height:7.5rem;object-fit:contain;
+                   filter:drop-shadow(0 4px 12px rgba(0,0,0,.7));
+                   transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s" class="ac-img"/>
+            </div>
+          </div>
+        </div>
+        <div style="padding:1.25rem 1.25rem 1.5rem">
+          <span style="display:inline-block;background:rgba(255,153,0,.15);color:#FF9900;
+                       font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+                       padding:.2rem .75rem;border-radius:100px;border:1px solid rgba(255,153,0,.3);
+                       margin-bottom:.5rem">&#9733; Destacado</span>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;
+                     color:#FF9900;margin-bottom:.3rem">CABEZAL 20W</h3>
+          <p style="font-size:.7rem;color:#888;font-weight:500;margin-bottom:1rem;line-height:1.5">
+            Apple &nbsp;&middot;&nbsp; USB-C Power Adapter &nbsp;&middot;&nbsp; Carga rápida</p>
+          <a href="https://wa.me/5491168087692?text=Consulta%20Cabezal%2020W%20Apple" target="_blank"
+             class="ac-btn magnetic" style="display:flex;align-items:center;justify-content:center;width:100%;
+             padding:.65rem 1rem;background:#FF9900;color:#fff;font-family:'Montserrat',sans-serif;
+             font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+             border-radius:.625rem;text-decoration:none;transition:all .25s;position:relative;overflow:hidden">
+            Consultar precio
+          </a>
+        </div>
+      </div>
+
+      <!-- CABLE USB-C -->
+      <div class="ac reveal rv3"
+           style="background:#1c1c1e;border:1px solid rgba(255,255,255,.1);border-radius:1.5rem;
+                  overflow:hidden;position:relative;transition:all .4s cubic-bezier(.16,1,.3,1)">
+        <div class="ac-glow" style="position:absolute;inset:0;border-radius:1.5rem;z-index:1;pointer-events:none;
+             background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(255,153,0,.14) 0%,transparent 55%);
+             opacity:0;transition:opacity .3s"></div>
+        <div class="ac-shine" style="position:absolute;top:0;left:-100%;width:55%;height:100%;z-index:5;
+             background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
+             transform:skewX(-15deg);transition:left .6s ease;pointer-events:none"></div>
+        <div style="height:13rem;display:flex;align-items:center;justify-content:center;
+                    background:linear-gradient(150deg,#242424,#1a1a1a);
+                    border-bottom:1px solid rgba(255,255,255,.07);position:relative">
+          <div class="ac-ring" style="position:relative;width:9rem;height:9rem;
+               display:flex;align-items:center;justify-content:center">
+            <div class="ac-spin" style="position:absolute;inset:-5px;border-radius:50%;
+                 border:2px dashed rgba(255,153,0,.25);
+                 animation:acSpin 9s linear infinite 2s"></div>
+            <div class="ac-disk" style="width:9rem;height:9rem;border-radius:50%;
+                 background:linear-gradient(135deg,#2c2c2c,#1e1e1e);
+                 border:2px solid rgba(255,255,255,.1);
+                 box-shadow:0 0 0 5px #1c1c1e,0 0 0 6px rgba(255,255,255,.06),inset 0 0 20px rgba(0,0,0,.5);
+                 display:flex;align-items:center;justify-content:center;
+                 transition:all .4s cubic-bezier(.16,1,.3,1)">
+              <img src="18-02c52ce80e4ba4d15617475088862381-1024-1024_nobg.png" style="max-width:7.5rem;max-height:7.5rem;object-fit:contain;
+                   filter:drop-shadow(0 4px 12px rgba(0,0,0,.7));
+                   transition:transform .5s cubic-bezier(.16,1,.3,1),filter .4s" class="ac-img"/>
+            </div>
+          </div>
+        </div>
+        <div style="padding:1.25rem 1.25rem 1.5rem">
+          <span style="display:inline-block;background:rgba(255,255,255,.07);color:#aaa;
+                       font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+                       padding:.2rem .75rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);
+                       margin-bottom:.5rem">Accesorio</span>
+          <h3 style="font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;
+                     color:#fff;margin-bottom:.3rem">CABLE USB-C</h3>
+          <p style="font-size:.7rem;color:#888;font-weight:500;margin-bottom:1rem;line-height:1.5">
+            Apple &nbsp;&middot;&nbsp; USB a Lightning &nbsp;&middot;&nbsp; 1m</p>
+          <a href="https://wa.me/5491168087692?text=Consulta%20Cable%20USB%20C%20Apple" target="_blank"
+             class="ac-btn magnetic" style="display:flex;align-items:center;justify-content:center;width:100%;
+             padding:.65rem 1rem;background:#FF9900;color:#fff;font-family:'Montserrat',sans-serif;
+             font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+             border-radius:.625rem;text-decoration:none;transition:all .25s;position:relative;overflow:hidden">
+            Consultar precio
+          </a>
+        </div>
+      </div>
+
+    </div><!-- /grid -->
+
+    <!-- CTA -->
+    <div style="text-align:center;margin-top:3rem" class="reveal">
+      <p style="color:#555;font-size:.85rem;font-weight:500;margin-bottom:1.25rem">
+        ¿Buscás otro accesorio? Consultanos y lo conseguimos.</p>
+      <a href="https://wa.me/5491168087692?text=Hola%2C%20consulto%20por%20accesorios" target="_blank"
+         class="btn btn-orange magnetic text-sm">Ver todos los accesorios</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="py-24 px-6 lg:px-8 bg-white" style="position:relative;z-index:1">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <span class="section-tag">Servicios</span>
+      <h2 class="font-black text-dark" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:3px">LO QUE OFRECEMOS</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="trust-box reveal text-left p-8"><span class="trust-icon">&#127911;</span><h3 class="font-bold text-dark text-base mb-2" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px;font-size:1.2rem">ACCESORIOS</h3><p class="text-muted text-sm leading-relaxed font-medium">Fundas, cables, auriculares y cargadores de primera calidad.</p></div>
+      <div class="trust-box reveal rv1 text-left p-8"><span class="trust-icon">&#128295;</span><h3 class="font-bold text-dark text-base mb-2" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px;font-size:1.2rem">SERVICIO TÉCNICO</h3><p class="text-muted text-sm leading-relaxed font-medium">Reparación de pantallas, baterías y más. Diagnóstico sin cargo.</p></div>
+      <div class="trust-box reveal rv2 text-left p-8"><span class="trust-icon">&#128666;</span><h3 class="font-bold text-dark text-base mb-2" style="font-family:'Bebas Neue',sans-serif;letter-spacing:1px;font-size:1.2rem">ENVÍOS</h3><p class="text-muted text-sm leading-relaxed font-medium">Enviamos a todo el país. Entrega coordinada en Castelar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="py-24 px-6 lg:px-8 bg-light" style="position:relative;z-index:1">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <span class="section-tag">Reseñas</span>
+      <h2 class="font-black text-dark" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,80px);letter-spacing:3px">LO QUE DICEN NUESTROS CLIENTES</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="review-card reveal"><div class="text-yellow-400 text-base mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="text-muted text-sm leading-relaxed mb-5 italic font-medium">"Increíble atención. Mi iPhone usado está impecable. Pagué al recibirlo, sin adelantos."</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#FF9900">LM</div><div><div class="font-bold text-dark text-sm">Lucía M.</div><div class="text-xs text-muted font-medium">iPhone 15 Pro Max</div></div></div></div>
+      <div class="review-card reveal rv1"><div class="text-yellow-400 text-base mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="text-muted text-sm leading-relaxed mb-5 italic font-medium">"Plan canje re fácil. Me fui con el 16 el mismo día. Muy transparentes."</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#FF9900">RP</div><div><div class="font-bold text-dark text-sm">Rodrigo P.</div><div class="text-xs text-muted font-medium">Plan Canje</div></div></div></div>
+      <div class="review-card reveal rv2"><div class="text-yellow-400 text-base mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="text-muted text-sm leading-relaxed mb-5 italic font-medium">"Primera vez comprando online y quedé re conforme. Respondieron al toque."</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#FF9900">VG</div><div><div class="font-bold text-dark text-sm">Valentina G.</div><div class="text-xs text-muted font-medium">iPhone 16</div></div></div></div>
+      <div class="review-card reveal rv3"><div class="text-yellow-400 text-base mb-3">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="text-muted text-sm leading-relaxed mb-5 italic font-medium">"Ya les compré dos veces. El equipo llegó perfecto y la garantía es real."</p><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#FF9900">MS</div><div><div class="font-bold text-dark text-sm">Matías S.</div><div class="text-xs text-muted font-medium">iPhone 14 Pro Max</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-24 px-6 lg:px-8 bg-dark" style="position:relative;z-index:1">
+  <div class="max-w-4xl mx-auto text-center reveal">
+    <h2 class="font-black mb-5 leading-none" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,6vw,90px);letter-spacing:3px;color:#fff">LISTO PARA TU<br/><span style="color:#FF9900">PRÓXIMO iPHONE?</span></h2>
+    <p class="text-gray-400 text-sm mb-10 max-w-xl mx-auto font-medium">Escribinos por WhatsApp o seguinos en Instagram. Respondemos rápido.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="https://wa.me/5491168087692?text=Hola%2C%20quiero%20consultar%20sobre%20un%20iPhone" target="_blank" class="btn btn-orange magnetic text-sm shadow-xl flex items-center justify-center gap-2">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        CHATEAR POR WHATSAPP
+      </a>
+      <a href="https://instagram.com/_tech.store.shop" target="_blank" class="btn text-sm" style="border:2px solid rgba(255,255,255,.2);color:#ccc;padding:.875rem 2rem;border-radius:.875rem">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @_TECH.STORE.SHOP
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-gray-400 py-14 px-6 lg:px-8 border-t border-gray-800" style="position:relative;z-index:1">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white font-black" style="background:#FF9900;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px">T</div>
+          <div>
+            <div class="font-black text-white text-sm" style="font-family:'Bebas Neue',sans-serif;letter-spacing:2px">TECH STORE SHOP</div>
+            <div class="text-xs text-gray-600 font-medium">Equipos electrónicos y accesorios</div>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 font-medium">Castelar, Buenos Aires<br/>Lunes a Sábados</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-4">Enlaces Rápidos</h4>
+        <ul class="space-y-2.5 text-sm font-medium">
+          <li><a href="#equipos" class="hover:text-accent transition-colors">&#8250; iPhones Nuevos</a></li>
+          <li><a href="#equipos" class="hover:text-accent transition-colors">&#8250; iPhones Usados</a></li>
+          <li><a href="#canje" class="hover:text-accent transition-colors">&#8250; Plan Canje</a></li>
+          <li><a href="#servicios" class="hover:text-accent transition-colors">&#8250; Accesorios</a></li>
+          <li><a href="#accesorios" class="hover:text-accent transition-colors">&#8250; Cables y Cargadores</a></li>
+          <li><a href="#servicios" class="hover:text-accent transition-colors">&#8250; Servicio Técnico</a></li>
+          <li><a href="#resenas" class="hover:text-accent transition-colors">&#8250; Reseñas de clientes</a></li>
+          <li><a href="#contacto" class="hover:text-accent transition-colors">&#8250; Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold text-xs uppercase tracking-widest mb-4">Redes Sociales</h4>
+        <div class="space-y-3">
+          <a href="https://instagram.com/_tech.store.shop" target="_blank" class="flex items-center gap-3 hover:text-accent transition-colors text-sm group font-medium">
+            <div class="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-orange-50 flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </div>
+            @_tech.store.shop
+          </a>
+          <a href="https://wa.me/5491168087692" target="_blank" class="flex items-center gap-3 hover:text-accent transition-colors text-sm group font-medium">
+            <div class="w-8 h-8 rounded-lg bg-gray-800 group-hover:bg-orange-50 flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            +54 9 11 6808-7692
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 text-center text-xs text-gray-700 font-medium">
+      &copy; 2025 Tech Store Shop &mdash; Todos los derechos reservados &mdash; Castelar, Buenos Aires
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
