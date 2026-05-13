@@ -496,3 +496,4 @@ body, a, button, .btn, .ac-btn, .nav-link { cursor: none !important; }
 
 /* Magnetic Items */
 .magnetic { display: inline-block; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+
